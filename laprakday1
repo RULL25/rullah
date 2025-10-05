@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rullah Animasi</title>
+    <style>
+        /* Mengatur halaman agar konten berada di tengah */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #1a1a1a; /* Latar belakang gelap agar tombol terlihat jelas */
+        }
+
+        /* Styling untuk tombol utama */
+        .btn {
+            padding: 1rem 3rem;
+            background: linear-gradient(90deg, #f1c92d, #f29f2e);
+            color: #222;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            box-shadow: 0 4px 14px 0px rgba(28, 28, 28, 0.2);
+            transition: transform 0.2s, box-shadow 0.2s;
+            animation: popIn 1.5s;
+            position: relative; /* Diperlukan untuk elemen .bubble di dalamnya */
+            overflow: hidden;   /* Menyembunyikan gelembung yang keluar dari tombol */
+        }
+
+        /* Efek saat kursor mouse berada di atas tombol */
+        .btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 8px 24px 0px rgba(28, 28, 28, 0.3);
+        }
+
+        /* Animasi gelembung latar belakang (dasar) */
+        .bubble {
+            position: absolute;
+            bottom: -100px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            animation: floatBubble 10s infinite linear;
+            z-index: 1; /* Pastikan gelembung di belakang teks tapi di atas background */
+        }
+
+        /* Variasi gelembung */
+        .bubble.left {
+            left: 10%;
+            width: 60px;
+            height: 60px;
+            animation-delay: 0s;
+        }
+
+        /* Keyframes untuk animasi gelembung (tidak terlihat di gambar, tapi dibutuhkan agar 'floatBubble' berfungsi) */
+        @keyframes floatBubble {
+            0% {
+                transform: translateY(0);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-200px);
+                opacity: 0;
+            }
+        }
+        
+        /* Keyframes untuk animasi tombol muncul (tidak terlihat di gambar, tapi dibutuhkan agar 'popIn' berfungsi) */
+        @keyframes popIn {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            60% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <button class="btn">
+        Hover Me!
+        <div class="bubble left"></div>
+    </button>
+
+</body>
+</html>
